@@ -4,7 +4,7 @@
   "displayName": "Frozen String Literal Ruby",
   "description": "This is an extension for automatically adding the frozen string literal comment at the top of ruby files",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.96.0"
   },
@@ -51,7 +51,7 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.100.0",
+    "@types/vscode": "^1.96.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
     "@typescript-eslint/eslint-plugin": "^8.31.1",
