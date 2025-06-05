@@ -2,10 +2,16 @@
   "name": "frozen-string-literal-ruby",
   "displayName": "Frozen String Literal Ruby",
   "description": "This is an extension for automatically adding the frozen string literal comment at the top of ruby files",
+  "license": "MIT",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.100.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SotiriouSotiris/ruby_frozen_string_literal"
+  },
+  "keywords": ["ruby", "frozen string literal", "frozen_string_literal", "magic comment"],
   "categories": [
     "Other"
   ],
