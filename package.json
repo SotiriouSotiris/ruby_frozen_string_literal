@@ -1,5 +1,6 @@
 {
   "name": "frozen-string-literal-ruby",
+  "publisher": "SotirisSotiriou",
   "displayName": "Frozen String Literal Ruby",
   "description": "This is an extension for automatically adding the frozen string literal comment at the top of ruby files",
   "license": "MIT",
