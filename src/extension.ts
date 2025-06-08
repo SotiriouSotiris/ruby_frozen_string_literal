@@ -2,12 +2,21 @@ import * as vscode from 'vscode';
 
 const FROZEN_COMMENT = '# frozen_string_literal: true';
 
+function isEligiblePath(document: vscode.TextDocument): boolean {
+  const filePath = document.uri.fsPath;
+  return (
+    filePath.includes('/app/') ||
+    filePath.includes('/lib/') ||
+    filePath.includes('/test/')
+  );
+}
+
 function isRubyFile(document: vscode.TextDocument): boolean {
 	return document.languageId === 'ruby';
 }
 
-function getEdits(document: vscode.TextDocument): vscode.TextEdit[] | undefined {
-  if (!isRubyFile(document)){
+function getEdits(document: vscode.TextDocument, checkPath: boolean = true): vscode.TextEdit[] | undefined {
+  if (!isRubyFile(document) || (checkPath && !isEligiblePath(document))){
 	return;
   }
 
@@ -60,7 +69,7 @@ export function activate(context: vscode.ExtensionContext) {
 	'frozen-string-literal-ruby.addFrozenLiteral',
 	async editor => {
 		const { document } = editor;
-		let edits = getEdits(document);
+		let edits = getEdits(document, false);
 
 		if (!isRubyFile(document)) {
 			const choice = await vscode.window.showInformationMessage(
