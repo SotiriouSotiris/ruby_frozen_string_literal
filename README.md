@@ -72,4 +72,4 @@ Search for Frozen String Literal Ruby in the Extensions panel in VS Code and ins
 
 ## License
 
-This extension is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This extension is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
