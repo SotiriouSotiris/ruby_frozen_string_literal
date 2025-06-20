@@ -29,6 +29,20 @@ You can disable the automatic behavior and use the manual command only:
 "frozenStringLiteralRuby.enableAutoInsert": false
 ```
 
+You can add paths of certain files or folders that you wish to be excluded from the automated insertion of the magic string
+
+```json
+"frozenStringLiteralRuby.excludePaths": [
+  "app/admin/",
+  "lib/vendor/"
+],
+
+"frozenStringLiteralRuby.excludeFiles": [
+  "lib/special_case.rb",
+  "test/legacy_test.rb"
+]
+```
+
 ---
 
 ## Examples
