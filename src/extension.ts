@@ -4,11 +4,19 @@ const FROZEN_COMMENT = '# frozen_string_literal: true';
 
 function isEligiblePath(document: vscode.TextDocument): boolean {
   const filePath = document.uri.fsPath;
-  return (
+  const config = vscode.workspace.getConfiguration('frozenStringLiteralRuby');
+  const excludePaths = config.get<string[]>('excludePaths', []);
+  const excludeFiles = config.get<string[]>('excludeFiles', []);
+ 
+  const included = (
     filePath.includes('/app/') ||
     filePath.includes('/lib/') ||
     filePath.includes('/test/')
   );
+
+  const excluded = excludePaths.some(excludePath => filePath.includes(excludePath)) ||
+  				   excludeFiles.some(excludeFile => filePath.endsWith(excludeFile));
+  return included && !excluded;
 }
 
 function isRubyFile(document: vscode.TextDocument): boolean {
@@ -51,8 +59,14 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	const didOpen = vscode.workspace.onDidOpenTextDocument(doc => {
+	const didOpen = vscode.window.onDidChangeActiveTextEditor(editor => {
+		if (!editor){
+			return;
+		}
+
+		const doc = editor.document;
 		const edits = getEdits(doc);
+
 		if (!edits){
 			return;
 		}

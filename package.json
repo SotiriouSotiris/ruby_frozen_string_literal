@@ -4,7 +4,7 @@
   "displayName": "Frozen String Literal Ruby",
   "description": "This is an extension for automatically adding the frozen string literal comment at the top of ruby files",
   "license": "MIT",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "engines": {
     "vscode": "^1.8.0"
   },
@@ -35,6 +35,22 @@
           "type": "boolean",
           "default": true,
           "description": "Automatically add `# frozen_string_literal: true` on open/save. If false, use manual command only."
+        },
+        "frozenStringLiteralRuby.excludePaths": {
+          "type": "array",
+          "description": "List of path substrings to exclude from automatic insertion. If the file path includes any of these, no edit will be applied.",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "frozenStringLiteralRuby.excludeFiles": {
+          "type": "array",
+          "description": "List of specific file paths to exclude from automatic insertion.",
+          "items": {
+            "type": "string"
+          },
+          "default": []
         }
       }
     }
